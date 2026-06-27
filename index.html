@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Straightline Creative</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #111111;
+      --cream:  #F0C9A0;
+      --orange: #E8692A;
+      --mint:   #7DD4A0;
+      --white:  #FFFFFF;
+      --gray:   #1A1A1A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--black);
+      border-bottom: 2px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-logo span.orange { color: var(--orange); }
+    .nav-logo span.mint   { color: var(--mint); }
+    .nav-logo span.cream  { color: var(--cream); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,105,42,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .hero-title .cream  { color: var(--cream); }
+    .hero-title .orange { color: var(--orange); }
+
+    .hero-divider {
+      width: 100%;
+      max-width: 700px;
+      height: 3px;
+      background: var(--white);
+      margin: 0.6rem auto;
+    }
+
+    .hero-title-2 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 2rem;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: #cf5a22; }
+    .btn-outline {
+      border: 2px solid var(--mint);
+      color: var(--mint);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover { background: var(--mint); color: var(--black); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-title .mint   { color: var(--mint); }
+    .section-title .orange { color: var(--orange); }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--orange);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--gray);
+      border-left: 4px solid var(--orange);
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+    .stat-card.mint-border { border-left-color: var(--mint); }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--gray);
+      max-width: 100%;
+      padding: 5rem 2rem;
+    }
+    #services .inner { max-width: 1100px; margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--orange);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: transform 0.2s, border-top-color 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-top-color: var(--mint);
+    }
+    .service-card.mint-top { border-top-color: var(--mint); }
+    .service-card.mint-top:hover { border-top-color: var(--orange); }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+      color: var(--cream);
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ── WORK / SHOWS ── */
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .show-card {
+      background: var(--gray);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.2s;
+    }
+    .show-card:hover { transform: translateY(-4px); }
+
+    .show-card-header {
+      height: 8px;
+      background: var(--orange);
+    }
+    .show-card-header.mint { background: var(--mint); }
+    .show-card-header.cream { background: var(--cream); }
+
+    .show-card-body { padding: 1.5rem; }
+    .show-card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .show-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      background: rgba(232,105,42,0.2);
+      color: var(--orange);
+      margin-bottom: 0.8rem;
+    }
+    .show-tag.mint {
+      background: rgba(125,212,160,0.15);
+      color: var(--mint);
+    }
+    .show-card-body p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--gray);
+      max-width: 100%;
+      padding: 5rem 2rem;
+    }
+    #contact .inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #contact .section-divider { margin: 0 auto 2.5rem; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+    .contact-form textarea { min-height: 140px; resize: vertical; }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    .form-submit { margin-top: 0.5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 2px solid var(--orange);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    footer span.orange { color: var(--orange); }
+    footer span.mint   { color: var(--mint); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav ul { gap: 1rem; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <span class="cream">STRAIGHT</span><span class="orange">LINE</span><br>
+      <span class="mint">CREATIVE</span>
+    </div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">Podcast Production & Content Strategy</p>
+    <h1 class="hero-title">
+      <span class="cream">STRAIGHT</span><span class="orange">LINE</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <h1 class="hero-title-2">CREATIVE</h1>
+    <p class="hero-sub">
+      Strategic podcast production and content services that turn expert voices into powerful, audience-building shows.
+    </p>
+    <div>
+      <a href="#services" class="btn btn-primary">What We Do</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">We Make <span class="mint">Podcasts</span><br>Work <span class="orange">Harder</span></h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Straightline Creative is a boutique podcast production and content strategy studio built for B2B brands, thought leaders, and niche experts who need more than just an audio file.
+        </p>
+        <p>
+          We handle the full production pipeline — from episode planning and recording prep to show notes, SEO copy, social assets, and guest promo kits — so you can stay focused on the conversation.
+        </p>
+        <p>
+          Every show we work on is treated as a content engine, not just a podcast.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Active Shows</div>
+        </div>
+        <div class="stat-card mint-border">
+          <div class="stat-number">100s</div>
+          <div class="stat-label">Episodes Produced</div>
+        </div>
+        <div class="stat-card mint-border">
+          <div class="stat-number">B2B</div>
+          <div class="stat-label">Niche Focused</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Full</div>
+          <div class="stat-label">Production Pipeline</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="inner">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">What We <span class="orange">Deliver</span></h2>
+      <div class="section-divider"></div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🎙️</div>
+          <h3>Episode Production</h3>
+          <p>End-to-end coordination — guest booking prep, recording logistics, audio QA, and delivery-ready files.</p>
+        </div>
+        <div class="service-card mint-top">
+          <div class="service-icon">📝</div>
+          <h3>Show Notes & SEO Copy</h3>
+          <p>Long-form, keyword-optimized show notes with chapter breakdowns, guest bios, and resource lists.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Social Media Assets</h3>
+          <p>Platform-specific captions, hashtag sets, and content calendars to maximize episode reach.</p>
+        </div>
+        <div class="service-card mint-top">
+          <div class="service-icon">🎁</div>
+          <h3>Guest Promo Kits</h3>
+          <p>Custom promo pages and share-ready assets that make it easy for guests to promote their episode.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📧</div>
+          <h3>Email & Newsletter Copy</h3>
+          <p>Episode announcement emails, newsletter segments, and subscriber sequences built around your show.</p>
+        </div>
+        <div class="service-card mint-top">
+          <div class="service-icon">🧭</div>
+          <h3>Content Strategy</h3>
+          <p>Market research, positioning, competitor analysis, and episode planning rooted in audience growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Shows We've <span class="mint">Powered</span></h2>
+    <div class="section-divider"></div>
+    <div class="shows-grid">
+      <div class="show-card">
+        <div class="show-card-header"></div>
+        <div class="show-card-body">
+          <span class="show-tag">Biotech / Science</span>
+          <h3>Grow Everything</h3>
+          <p>A synthetic biology and biotech podcast bringing cutting-edge science to a broader audience through expert interviews and narrative storytelling.</p>
+        </div>
+      </div>
+      <div class="show-card">
+        <div class="show-card-header mint"></div>
+        <div class="show-card-body">
+          <span class="show-tag mint">Real Estate</span>
+          <h3>Reside Platform Podcast</h3>
+          <p>Actionable insights for real estate team leaders and agents looking to build sustainable, scalable businesses.</p>
+        </div>
+      </div>
+      <div class="show-card">
+        <div class="show-card-header"></div>
+        <div class="show-card-body">
+          <span class="show-tag">Cybersecurity</span>
+          <h3>Industrial Cyber Security Insider</h3>
+          <p>Expert conversations on OT/IT security for industrial professionals navigating an increasingly complex threat landscape.</p>
+        </div>
+      </div>
+      <div class="show-card">
+        <div class="show-card-header mint"></div>
+        <div class="show-card-body">
+          <span class="show-tag mint">Entrepreneurship</span>
+          <h3>7 Figure Leap</h3>
+          <p>Helping entrepreneurs leverage podcast guesting as a growth channel to build authority and drive business results.</p>
+        </div>
+      </div>
+      <div class="show-card">
+        <div class="show-card-header cream"></div>
+        <div class="show-card-body">
+          <span class="show-tag">Financial Services</span>
+          <h3>7 Figure Advisor</h3>
+          <p>Content strategy and production for financial advisors building thought leadership through long-form audio content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's <span class="orange">Talk</span></h2>
+      <div class="section-divider"></div>
+      <p style="color: rgba(255,255,255,0.65); line-height: 1.7;">
+        Ready to build a podcast that actually works as a content engine? Send a message and let's figure out what your show needs.
+      </p>
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <input type="text" name="subject" placeholder="What's this about?" />
+        <textarea name="message" placeholder="Tell me about your show or project..." required></textarea>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">Send Message →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span class="cream">STRAIGHT</span><span class="orange">LINE</span> <span class="mint">CREATIVE</span> — All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
