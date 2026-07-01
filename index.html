@@ -486,7 +486,26 @@
     .contact-form input::placeholder,
     .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
 
-    .form-submit { margin-top: 0.5rem; }
+    .form-submit {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .form-submit button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .form-status {
+      min-height: 1.5rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .form-status.success { color: var(--mint); }
+    .form-status.error { color: var(--cream); }
 
     /* ── FOOTER ── */
     footer {
@@ -698,7 +717,7 @@
       <p style="color: rgba(255,255,255,0.65); line-height: 1.7;">
         Ready to build a podcast that actually works as a content engine? Send a message and let's figure out what your show needs.
       </p>
-      <form class="contact-form" action="https://formspree.io/f/mzdljvkp" method="POST">
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mzdljvkp" method="POST">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
@@ -708,6 +727,7 @@
         <div class="form-submit">
           <button type="submit" class="btn btn-primary">Send Message →</button>
         </div>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -716,6 +736,47 @@
   <footer>
     <p>© 2026 <span class="cream">STRAIGHT</span><span class="orange">LINE</span> <span class="mint">CREATIVE</span> — All rights reserved.</p>
   </footer>
+
+  <script>
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const submitButtonText = submitButton.textContent;
+
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: contactForm.method,
+          body: new FormData(contactForm),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          formStatus.textContent = 'Thanks! Your message has been sent.';
+          formStatus.classList.add('success');
+          contactForm.reset();
+        } else {
+          formStatus.textContent = 'Something went wrong. Please try again.';
+          formStatus.classList.add('error');
+        }
+      } catch (error) {
+        formStatus.textContent = 'Something went wrong. Please check your connection and try again.';
+        formStatus.classList.add('error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButtonText;
+      }
+    });
+  </script>
 
 </body>
 </html>
