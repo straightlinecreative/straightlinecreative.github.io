@@ -509,6 +509,57 @@
       grid-template-columns: 1fr;
     }
 
+    .heated-card {
+      border-top-color: var(--mint);
+      background: linear-gradient(135deg, rgba(125,212,160,0.07), rgba(26,26,26,1) 42%);
+    }
+
+    .heated-card .featured-media {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(232,105,42,0.18), transparent 34%),
+        radial-gradient(circle at 88% 82%, rgba(125,212,160,0.14), transparent 32%),
+        var(--black);
+    }
+
+    .heated-card .featured-show-copy {
+      position: relative;
+    }
+
+    .project-series {
+      color: var(--orange) !important;
+      font-size: 0.78rem !important;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.85rem !important;
+      text-transform: uppercase;
+    }
+
+    .project-hook {
+      color: var(--cream) !important;
+      font-size: 1.18rem !important;
+      font-weight: 900;
+      line-height: 1.4 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .project-focus {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.15rem 0 1.2rem;
+    }
+
+    .project-focus span {
+      padding: 0.4rem 0.65rem;
+      border: 1px solid rgba(125,212,160,0.3);
+      border-radius: 999px;
+      background: rgba(125,212,160,0.08);
+      color: var(--mint);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
     .video-thumb {
       position: relative;
       display: block;
@@ -1255,7 +1306,7 @@
     <div class="section-divider"></div>
     <p class="section-intro">A few of the stories and shows I've helped bring to life.</p>
     <div class="shows-grid">
-      <article class="show-card featured-show-card">
+      <article class="show-card featured-show-card heated-card">
         <div class="featured-media single-video">
           <button class="video-thumb video-thumb-wide" type="button" data-video-id="QBVQsOuC3xs" data-video-format="wide" aria-label="Play the featured Heated Reverence Podcast video">
             <img src="https://i.ytimg.com/vi/QBVQsOuC3xs/hqdefault.jpg" alt="Heated Reverence Podcast featured video thumbnail" loading="lazy" />
@@ -1264,10 +1315,17 @@
           </button>
         </div>
         <div class="featured-show-copy">
-          <span class="show-tag mint">Podcast / Conversation</span>
-          <h3>Heated Reverence Podcast</h3>
-          <p>Featured work created for the Heated Reverence Podcast.</p>
-          <p class="project-role">Work shown: Featured Video</p>
+          <span class="show-tag mint">TV &amp; Book Analysis</span>
+          <h3>Heated Reverence</h3>
+          <p class="project-series">The Heated Rivalry Podcast</p>
+          <p class="project-hook">Two friends. Two perspectives. One story they cannot stop talking about.</p>
+          <p>Lesley explores character psychology and narrative structure. Jose Miguel brings the immediate emotional reaction to the chemistry and high stakes.</p>
+          <div class="project-focus" aria-label="Show topics">
+            <span>Episode Breakdowns</span>
+            <span>Character Psychology</span>
+            <span>Game Changers Books</span>
+          </div>
+          <p class="project-role">Featured piece: Full Episode</p>
           <a class="channel-link" href="https://www.youtube.com/@HeatedReverencePodcast" target="_blank" rel="noopener">Visit Heated Reverence on YouTube →</a>
         </div>
       </article>
