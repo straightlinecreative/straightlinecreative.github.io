@@ -505,6 +505,10 @@
       background: var(--black);
     }
 
+    .featured-media.single-video {
+      grid-template-columns: 1fr;
+    }
+
     .video-thumb {
       position: relative;
       display: block;
@@ -1016,6 +1020,10 @@
         grid-template-columns: minmax(0, 1.8fr) minmax(110px, 0.7fr);
       }
 
+      .featured-media.single-video {
+        grid-template-columns: 1fr;
+      }
+
       .featured-show-copy {
         padding: 1.5rem;
       }
@@ -1248,6 +1256,22 @@
     <p class="section-intro">A few of the stories and shows I've helped bring to life.</p>
     <div class="shows-grid">
       <article class="show-card featured-show-card">
+        <div class="featured-media single-video">
+          <button class="video-thumb video-thumb-wide" type="button" data-video-id="QBVQsOuC3xs" data-video-format="wide" aria-label="Play the featured Heated Reverence Podcast video">
+            <img src="https://i.ytimg.com/vi/QBVQsOuC3xs/hqdefault.jpg" alt="Heated Reverence Podcast featured video thumbnail" loading="lazy" />
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-label">Watch the Featured Video</span>
+          </button>
+        </div>
+        <div class="featured-show-copy">
+          <span class="show-tag mint">Podcast / Conversation</span>
+          <h3>Heated Reverence Podcast</h3>
+          <p>Featured work created for the Heated Reverence Podcast.</p>
+          <p class="project-role">Work shown: Featured Video</p>
+          <a class="channel-link" href="https://www.youtube.com/@HeatedReverencePodcast" target="_blank" rel="noopener">Visit Heated Reverence on YouTube →</a>
+        </div>
+      </article>
+      <article class="show-card featured-show-card">
         <div class="featured-media">
           <button class="video-thumb video-thumb-wide" type="button" data-video-id="rmcsy8I-ZyI" data-video-format="wide" aria-label="Play the Grow Everything video ad">
             <img src="https://i.ytimg.com/vi/rmcsy8I-ZyI/hqdefault.jpg" alt="Grow Everything video ad thumbnail" loading="lazy" />
@@ -1268,14 +1292,6 @@
           <a class="channel-link" href="https://www.youtube.com/channel/UCyfFwKFgFVMfEz4VWYwL4fg" target="_blank" rel="noopener">Visit Grow Everything on YouTube →</a>
         </div>
       </article>
-      <div class="show-card">
-        <div class="show-card-header mint"></div>
-        <div class="show-card-body">
-          <span class="show-tag mint">Real Estate</span>
-          <h3>Reside Platform Podcast</h3>
-          <p>Practical conversations for real estate professionals building stronger teams, businesses, and communities.</p>
-        </div>
-      </div>
       <div class="show-card">
         <div class="show-card-header"></div>
         <div class="show-card-body">
