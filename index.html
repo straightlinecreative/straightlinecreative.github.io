@@ -29,6 +29,8 @@
       overflow-x: hidden;
     }
 
+    body.modal-open { overflow: hidden; }
+
     img { max-width: 100%; }
 
     section[id] { scroll-margin-top: 6rem; }
@@ -487,6 +489,131 @@
     }
     .show-card:hover { transform: translateY(-4px); }
 
+    .featured-show-card {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      align-items: stretch;
+      border-top: 3px solid var(--orange);
+    }
+
+    .featured-media {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(150px, 0.75fr);
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--black);
+    }
+
+    .video-thumb {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      background: #080808;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 5px;
+      cursor: pointer;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      text-align: left;
+    }
+
+    .video-thumb-wide { aspect-ratio: 16 / 9; }
+    .video-thumb-short { aspect-ratio: 9 / 16; }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .video-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.02) 65%);
+    }
+
+    .video-thumb:hover img {
+      transform: scale(1.03);
+      opacity: 0.88;
+    }
+
+    .video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .video-thumb-short .video-play {
+      width: 48px;
+      height: 48px;
+    }
+
+    .video-label {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 0.85rem;
+      z-index: 2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .featured-show-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .featured-show-copy h3 {
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      color: var(--cream);
+      margin-bottom: 0.85rem;
+    }
+
+    .featured-show-copy > p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-role {
+      color: var(--mint) !important;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .channel-link {
+      color: var(--orange);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .channel-link:hover { color: var(--cream); }
+
     .show-card-header {
       height: 8px;
       background: var(--orange);
@@ -521,6 +648,66 @@
       font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
       line-height: 1.6;
+    }
+
+    /* ── VIDEO MODAL ── */
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background: rgba(0,0,0,0.86);
+    }
+
+    .video-modal.open { display: flex; }
+
+    .video-modal-dialog {
+      position: relative;
+      width: min(100%, 960px);
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+    }
+
+    .video-modal-dialog.short-video {
+      width: min(100%, 430px);
+    }
+
+    .video-frame-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .video-modal-dialog.short-video .video-frame-wrap {
+      aspect-ratio: 9 / 16;
+    }
+
+    .video-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
     }
 
     /* ── CONTACT ── */
@@ -633,6 +820,12 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .featured-show-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       section[id] { scroll-margin-top: 5.25rem; }
 
@@ -819,6 +1012,14 @@
         gap: 1rem;
       }
 
+      .featured-media {
+        grid-template-columns: minmax(0, 1.8fr) minmax(110px, 0.7fr);
+      }
+
+      .featured-show-copy {
+        padding: 1.5rem;
+      }
+
       .service-card {
         padding: 1.5rem;
       }
@@ -847,6 +1048,21 @@
 
       footer {
         padding: 2rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .featured-media {
+        grid-template-columns: 1fr;
+      }
+
+      .video-thumb-short {
+        width: min(180px, 100%);
+        margin: 0 auto;
+      }
+
+      .video-modal {
+        padding: 3.5rem 0.75rem 1rem;
       }
     }
 
@@ -1031,14 +1247,27 @@
     <div class="section-divider"></div>
     <p class="section-intro">A few of the stories and shows I've helped bring to life.</p>
     <div class="shows-grid">
-      <div class="show-card">
-        <div class="show-card-header"></div>
-        <div class="show-card-body">
+      <article class="show-card featured-show-card">
+        <div class="featured-media">
+          <button class="video-thumb video-thumb-wide" type="button" data-video-id="rmcsy8I-ZyI" data-video-format="wide" aria-label="Play the Grow Everything video ad">
+            <img src="https://i.ytimg.com/vi/rmcsy8I-ZyI/hqdefault.jpg" alt="Grow Everything video ad thumbnail" loading="lazy" />
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-label">Watch the Ad</span>
+          </button>
+          <button class="video-thumb video-thumb-short" type="button" data-video-id="9CYFY15hwfc" data-video-format="short" aria-label="Play the Grow Everything short">
+            <img src="https://i.ytimg.com/vi/9CYFY15hwfc/hqdefault.jpg" alt="Grow Everything short-form video thumbnail" loading="lazy" />
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-label">Watch the Short</span>
+          </button>
+        </div>
+        <div class="featured-show-copy">
           <span class="show-tag">Biotech / Science</span>
           <h3>Grow Everything</h3>
           <p>Conversations that make synthetic biology and biotech easier to understand without losing the wonder of the science.</p>
+          <p class="project-role">Work shown: Video Ad · Short-Form Edit</p>
+          <a class="channel-link" href="https://www.youtube.com/channel/UCyfFwKFgFVMfEz4VWYwL4fg" target="_blank" rel="noopener">Visit Grow Everything on YouTube →</a>
         </div>
-      </div>
+      </article>
       <div class="show-card">
         <div class="show-card-header mint"></div>
         <div class="show-card-body">
@@ -1109,6 +1338,16 @@
     <p class="footer-signature">Made with curiosity, creativity, and a lot of coffee.</p>
   </footer>
 
+  <!-- VIDEO MODAL -->
+  <div id="video-modal" class="video-modal" aria-hidden="true">
+    <div id="video-modal-dialog" class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Video player">
+      <button id="video-modal-close" class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="video-frame-wrap">
+        <iframe id="video-frame" title="Straightline Creative portfolio video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -1126,6 +1365,55 @@
         navToggle.setAttribute('aria-label', 'Open navigation');
         navMenu.classList.remove('open');
       });
+    });
+
+    const videoModal = document.getElementById('video-modal');
+    const videoModalDialog = document.getElementById('video-modal-dialog');
+    const videoFrame = document.getElementById('video-frame');
+    const videoModalClose = document.getElementById('video-modal-close');
+    let lastVideoTrigger = null;
+
+    function openVideoModal(trigger) {
+      const videoId = trigger.dataset.videoId;
+      const isShort = trigger.dataset.videoFormat === 'short';
+
+      lastVideoTrigger = trigger;
+      videoModalDialog.classList.toggle('short-video', isShort);
+      videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      videoModal.classList.add('open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      videoModalClose.focus();
+    }
+
+    function closeVideoModal() {
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      videoModalDialog.classList.remove('short-video');
+      videoFrame.src = '';
+      document.body.classList.remove('modal-open');
+
+      if (lastVideoTrigger) {
+        lastVideoTrigger.focus();
+      }
+    }
+
+    document.querySelectorAll('.video-thumb').forEach((trigger) => {
+      trigger.addEventListener('click', () => openVideoModal(trigger));
+    });
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+
+    videoModal.addEventListener('click', (event) => {
+      if (event.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && videoModal.classList.contains('open')) {
+        closeVideoModal();
+      }
     });
 
     const contactForm = document.getElementById('contact-form');
