@@ -546,6 +546,24 @@
       color: var(--mint) !important;
     }
 
+    .recruiting-card {
+      border-top-color: var(--orange);
+      background: linear-gradient(135deg, rgba(232,105,42,0.08), rgba(26,26,26,1) 46%);
+    }
+
+    .recruiting-card .featured-media {
+      background:
+        radial-gradient(circle at 15% 22%, rgba(232,105,42,0.2), transparent 34%),
+        radial-gradient(circle at 84% 76%, rgba(240,201,160,0.12), transparent 30%),
+        var(--black);
+    }
+
+    .recruiting-card .project-focus span {
+      border-color: rgba(240,201,160,0.32);
+      background: rgba(240,201,160,0.08);
+      color: var(--cream);
+    }
+
     .project-series {
       color: var(--orange) !important;
       font-size: 0.78rem !important;
@@ -1394,20 +1412,35 @@
           <a class="channel-link" href="https://www.youtube.com/@7FigureLeapPodcast" target="_blank" rel="noopener">Visit 7 Figure Leap on YouTube →</a>
         </div>
       </article>
+      <article class="show-card featured-show-card recruiting-card">
+        <div class="featured-media single-video">
+          <button class="video-thumb video-thumb-wide" type="button" data-video-id="rFClUgq64QE" data-video-format="wide" aria-label="Play the internal corporate recruiting video">
+            <img src="https://i.ytimg.com/vi/rFClUgq64QE/hqdefault.jpg" alt="Internal corporate recruiting video thumbnail" loading="lazy" />
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-label">Watch the Recruiting Video</span>
+          </button>
+        </div>
+        <div class="featured-show-copy">
+          <span class="show-tag mint">Internal Corporate Video</span>
+          <h3>Recruiting Across Cities</h3>
+          <p class="project-series">Company Culture Piece</p>
+          <p class="project-hook">A playful internal recruiting video built around people, personality, and a shared song.</p>
+          <p>I selected the clips, added the city names, synchronized the singing to the music, and color corrected each shot so footage from different locations felt like one cohesive piece.</p>
+          <div class="project-focus" aria-label="Work completed">
+            <span>Clip Selection</span>
+            <span>City Titles</span>
+            <span>Music Sync</span>
+            <span>Color Correction</span>
+          </div>
+          <p class="project-role">What I created: Editorial Assembly · Titles · Audio Sync · Color</p>
+        </div>
+      </article>
       <div class="show-card">
         <div class="show-card-header"></div>
         <div class="show-card-body">
           <span class="show-tag">Cybersecurity</span>
           <h3>Industrial Cyber Security Insider</h3>
           <p>Clear conversations about the people, systems, and decisions shaping industrial cybersecurity.</p>
-        </div>
-      </div>
-      <div class="show-card">
-        <div class="show-card-header cream"></div>
-        <div class="show-card-body">
-          <span class="show-tag">Financial Services</span>
-          <h3>7 Figure Advisor</h3>
-          <p>Thoughtful conversations for financial advisors building better businesses and serving clients with intention.</p>
         </div>
       </div>
     </div>
