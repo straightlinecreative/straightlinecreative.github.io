@@ -96,6 +96,8 @@
       text-transform: uppercase;
       color: var(--mint);
       margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-title {
@@ -105,6 +107,8 @@
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 1;
     }
     .hero-title .cream  { color: var(--cream); }
     .hero-title .orange { color: var(--orange); }
@@ -115,6 +119,8 @@
       height: 3px;
       background: var(--white);
       margin: 0.6rem auto;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-title-2 {
@@ -123,16 +129,47 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mint);
-      margin-bottom: 2rem;
+      margin-bottom: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-promise {
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-sub {
       font-size: 1.15rem;
       font-weight: 400;
       color: rgba(255,255,255,0.7);
-      max-width: 560px;
+      max-width: 620px;
       line-height: 1.7;
       margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-note {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .btn {
@@ -396,6 +433,7 @@
       #about .about-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+      .hero-note { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -417,19 +455,21 @@
 
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-eyebrow">Podcast Production & Content Strategy</p>
+    <p class="hero-eyebrow">Podcast Producer • Content Strategist • Digital Storyteller</p>
     <h1 class="hero-title">
       <span class="cream">STRAIGHT</span><span class="orange">LINE</span>
     </h1>
     <div class="hero-divider"></div>
     <h1 class="hero-title-2">CREATIVE</h1>
+    <p class="hero-promise">Creating Content Worth Watching.</p>
     <p class="hero-sub">
-      Strategic podcast production and content services that turn expert voices into powerful, audience-building shows.
+      I help people turn ideas into stories that educate, inspire, and connect.
     </p>
-    <div>
-      <a href="#services" class="btn btn-primary">What We Do</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View My Work</a>
+      <a href="https://calendly.com/straightlinecreative/30min?month=2026-07" class="btn btn-outline" target="_blank" rel="noopener">Let's Create Together</a>
     </div>
+    <p class="hero-note">Podcasts. Video. Strategy. Stories that stick.</p>
   </section>
 
   <!-- ABOUT -->
