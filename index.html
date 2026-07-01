@@ -228,10 +228,10 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ── ABOUT ── */
+    /* ── STORY ── */
     #about .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
       gap: 3rem;
       align-items: center;
     }
@@ -243,32 +243,85 @@
       margin-bottom: 1rem;
     }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+    .story-lead {
+      color: var(--cream) !important;
+      font-size: 1.25rem !important;
+      font-weight: 700;
     }
 
-    .stat-card {
-      background: var(--gray);
-      border-left: 4px solid var(--orange);
-      padding: 1.5rem;
-      border-radius: 4px;
-    }
-    .stat-card.mint-border { border-left-color: var(--mint); }
-
-    .stat-number {
-      font-size: 2.5rem;
+    .story-emphasis {
+      color: var(--mint) !important;
+      font-size: 1.3rem !important;
       font-weight: 900;
-      color: var(--cream);
-      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
-    .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 0.3rem;
+
+    .story-close {
+      color: var(--cream) !important;
+      font-size: 1.35rem !important;
+      font-weight: 900;
+      margin-top: 1.5rem;
+    }
+
+    .story-photo-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--gray);
+    }
+
+    .story-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: saturate(0.95) contrast(1.05);
+    }
+
+    .story-photo-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(17,17,17,0.9), rgba(17,17,17,0));
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .story-photo-wrap:hover .story-photo-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+
+    .story-principle {
+      color: rgba(255,255,255,0.78);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 900;
+      line-height: 1.25;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+    }
+
+    .story-principle span {
+      color: var(--orange);
     }
 
     /* ── SERVICES ── */
@@ -429,8 +482,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      nav { padding: 1rem; }
       nav ul { gap: 1rem; }
       #about .about-grid { grid-template-columns: 1fr; }
+      .story-photo-wrap { max-width: 420px; margin: 0 auto; }
+      .story-principles { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .btn-outline { margin-left: 0; margin-top: 0.75rem; }
       .hero-note { font-size: 0.8rem; }
@@ -446,7 +502,7 @@
       <span class="mint">CREATIVE</span>
     </div>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">Story</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -472,41 +528,56 @@
     <p class="hero-note">Podcasts. Video. Strategy. Stories that stick.</p>
   </section>
 
-  <!-- ABOUT -->
+  <!-- STORY -->
   <section id="about">
-    <p class="section-label">About</p>
-    <h2 class="section-title">We Make <span class="mint">Podcasts</span><br>Work <span class="orange">Harder</span></h2>
+    <p class="section-label">Story</p>
+    <h2 class="section-title">The Story Behind<br><span class="mint">Straightline</span> <span class="orange">Creative</span></h2>
     <div class="section-divider"></div>
     <div class="about-grid">
       <div class="about-text">
-        <p>
-          Straightline Creative is a boutique podcast production and content strategy studio built for B2B brands, thought leaders, and niche experts who need more than just an audio file.
+        <p class="story-lead">
+          Straightline Creative started with a simple curiosity.
         </p>
         <p>
-          We handle the full production pipeline — from episode planning and recording prep to show notes, SEO copy, social assets, and guest promo kits — so you can stay focused on the conversation.
+          I wanted to understand what makes a story stick with people.
         </p>
         <p>
-          Every show we work on is treated as a content engine, not just a podcast.
+          My journey into podcasting began in 2020. Every conversation taught me something new. The more stories I helped bring to life, the more I realized something.
+        </p>
+        <p class="story-emphasis">
+          Great storytelling isn't tied to one medium.
+        </p>
+        <p>
+          As the creative landscape evolved, I taught myself video production and editing because I wanted to tell better stories in more ways. Today, podcasts, video, and creative strategy all work together with one goal in mind.
+        </p>
+        <p class="story-emphasis">
+          Helping people tell stories worth watching.
+        </p>
+        <p>
+          I believe every great project starts with a conversation. Not because it's part of my process. Because understanding your story is the most important part of telling it well.
+        </p>
+        <p>
+          Every project is different. Every person brings a unique perspective, a unique challenge, and a story only they can tell. My role is to listen first, ask thoughtful questions, and create something that feels authentic to who you are.
+        </p>
+        <p>
+          Technology continues to change the way we create. I embrace those tools because they help me work smarter and create more efficiently. But the ideas, the curiosity, and the relationships behind every project will always be human.
+        </p>
+        <p>
+          Stories have the power to educate, inspire, and connect.
+        </p>
+        <p class="story-close">
+          My job is to help you tell yours.
         </p>
       </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Active Shows</div>
-        </div>
-        <div class="stat-card mint-border">
-          <div class="stat-number">100s</div>
-          <div class="stat-label">Episodes Produced</div>
-        </div>
-        <div class="stat-card mint-border">
-          <div class="stat-number">B2B</div>
-          <div class="stat-label">Niche Focused</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">Full</div>
-          <div class="stat-label">Production Pipeline</div>
-        </div>
+      <div class="story-photo-wrap">
+        <img class="story-photo" src="assets/images/kevin-outdoors.svg" alt="Kevin outdoors" />
+        <div class="story-photo-caption">Hi, I'm Kevin. Thanks for stopping by.</div>
       </div>
+    </div>
+    <div class="story-principles" aria-label="Straightline Creative principles">
+      <p class="story-principle">Every great project<br><span>starts with a conversation.</span></p>
+      <p class="story-principle">Tools change.<br><span>Storytelling doesn't.</span></p>
+      <p class="story-principle">Creating Content<br><span>Worth Watching.</span></p>
     </div>
   </section>
 
