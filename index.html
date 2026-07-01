@@ -507,6 +507,26 @@
     .form-status.success { color: var(--mint); }
     .form-status.error { color: var(--cream); }
 
+    .post-submit-cta {
+      display: none;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .post-submit-cta.visible {
+      display: block;
+    }
+
+    .post-submit-cta p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .post-submit-cta .btn-outline {
+      margin-left: 0;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--black);
@@ -728,6 +748,10 @@
           <button type="submit" class="btn btn-primary">Send Message →</button>
         </div>
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        <div id="post-submit-cta" class="post-submit-cta" aria-hidden="true">
+          <p>Want to talk sooner? Schedule a quick call.</p>
+          <a href="https://calendly.com/straightlinecreative/30min?month=2026-07" class="btn btn-outline" target="_blank" rel="noopener">Let's Create Together</a>
+        </div>
       </form>
     </div>
   </section>
@@ -740,6 +764,7 @@
   <script>
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
+    const postSubmitCta = document.getElementById('post-submit-cta');
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const submitButtonText = submitButton.textContent;
 
@@ -748,6 +773,8 @@
 
       formStatus.textContent = '';
       formStatus.className = 'form-status';
+      postSubmitCta.classList.remove('visible');
+      postSubmitCta.setAttribute('aria-hidden', 'true');
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
@@ -763,6 +790,8 @@
         if (response.ok) {
           formStatus.textContent = 'Thanks! Your message has been sent.';
           formStatus.classList.add('success');
+          postSubmitCta.classList.add('visible');
+          postSubmitCta.setAttribute('aria-hidden', 'false');
           contactForm.reset();
         } else {
           formStatus.textContent = 'Something went wrong. Please try again.';
