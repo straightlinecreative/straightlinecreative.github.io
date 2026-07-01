@@ -532,12 +532,29 @@
       background: var(--black);
       border-top: 2px solid var(--orange);
       text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.4);
+      padding: 2.5rem 2rem;
+      color: rgba(255,255,255,0.5);
     }
-    footer span.orange { color: var(--orange); }
-    footer span.mint   { color: var(--mint); }
+
+    .footer-brand {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-promise {
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-signature {
+      font-size: 0.85rem;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -656,7 +673,7 @@
   <section id="services">
     <div class="inner">
       <p class="section-label">Services</p>
-      <h2 class="section-title">What We <span class="orange">Create</span></h2>
+      <h2 class="section-title">What I <span class="orange">Create</span></h2>
       <div class="section-divider"></div>
       <div class="services-grid">
         <div class="service-card">
@@ -667,7 +684,7 @@
         <div class="service-card mint-top">
           <div class="service-icon">🎬</div>
           <h3>Video Production</h3>
-          <p>Story-driven video content designed to educate, inspire, and connect.</p>
+          <p>Story driven video content designed to educate, inspire, and connect.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🧭</div>
@@ -690,7 +707,7 @@
         <div class="show-card-body">
           <span class="show-tag">Biotech / Science</span>
           <h3>Grow Everything</h3>
-          <p>A synthetic biology and biotech podcast bringing cutting-edge science to a broader audience through expert interviews and narrative storytelling.</p>
+          <p>Conversations that make synthetic biology and biotech easier to understand without losing the wonder of the science.</p>
         </div>
       </div>
       <div class="show-card">
@@ -698,7 +715,7 @@
         <div class="show-card-body">
           <span class="show-tag mint">Real Estate</span>
           <h3>Reside Platform Podcast</h3>
-          <p>Actionable insights for real estate team leaders and agents looking to build sustainable, scalable businesses.</p>
+          <p>Practical conversations for real estate professionals building stronger teams, businesses, and communities.</p>
         </div>
       </div>
       <div class="show-card">
@@ -706,7 +723,7 @@
         <div class="show-card-body">
           <span class="show-tag">Cybersecurity</span>
           <h3>Industrial Cyber Security Insider</h3>
-          <p>Expert conversations on OT/IT security for industrial professionals navigating an increasingly complex threat landscape.</p>
+          <p>Clear conversations about the people, systems, and decisions shaping industrial cybersecurity.</p>
         </div>
       </div>
       <div class="show-card">
@@ -714,7 +731,7 @@
         <div class="show-card-body">
           <span class="show-tag mint">Entrepreneurship</span>
           <h3>7 Figure Leap</h3>
-          <p>Helping entrepreneurs leverage podcast guesting as a growth channel to build authority and drive business results.</p>
+          <p>Honest conversations with entrepreneurs about growth, leadership, and the lessons behind the numbers.</p>
         </div>
       </div>
       <div class="show-card">
@@ -722,7 +739,7 @@
         <div class="show-card-body">
           <span class="show-tag">Financial Services</span>
           <h3>7 Figure Advisor</h3>
-          <p>Content strategy and production for financial advisors building thought leadership through long-form audio content.</p>
+          <p>Thoughtful conversations for financial advisors building better businesses and serving clients with intention.</p>
         </div>
       </div>
     </div>
@@ -735,7 +752,7 @@
       <h2 class="section-title">Let's <span class="orange">Talk</span></h2>
       <div class="section-divider"></div>
       <p style="color: rgba(255,255,255,0.65); line-height: 1.7;">
-        Ready to build a podcast that actually works as a content engine? Send a message and let's figure out what your show needs.
+        Have an idea worth exploring? Send me a note and tell me what you are creating.
       </p>
       <form id="contact-form" class="contact-form" action="https://formspree.io/f/mzdljvkp" method="POST">
         <div class="form-row">
@@ -743,7 +760,7 @@
           <input type="email" name="email" placeholder="Your Email" required />
         </div>
         <input type="text" name="subject" placeholder="What's this about?" />
-        <textarea name="message" placeholder="Tell me about your show or project..." required></textarea>
+        <textarea name="message" placeholder="Tell me about your idea or project..." required></textarea>
         <div class="form-submit">
           <button type="submit" class="btn btn-primary">Send Message →</button>
         </div>
@@ -758,7 +775,9 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 <span class="cream">STRAIGHT</span><span class="orange">LINE</span> <span class="mint">CREATIVE</span> — All rights reserved.</p>
+    <p class="footer-brand">Straightline Creative</p>
+    <p class="footer-promise">Creating Content Worth Watching.</p>
+    <p class="footer-signature">Made with curiosity, creativity, and a lot of coffee.</p>
   </footer>
 
   <script>
