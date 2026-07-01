@@ -64,6 +64,7 @@
     nav ul {
       list-style: none;
       display: flex;
+      align-items: center;
       gap: 2rem;
     }
     nav ul a {
@@ -73,9 +74,23 @@
       font-size: 0.9rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: color 0.2s;
+      transition: color 0.2s, background 0.2s;
     }
     nav ul a:hover { color: var(--orange); }
+
+    nav ul a.nav-cta {
+      display: inline-block;
+      padding: 0.7rem 1rem;
+      background: var(--orange);
+      border-radius: 4px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    nav ul a.nav-cta:hover {
+      background: #cf5a22;
+      color: var(--white);
+    }
 
     .nav-toggle {
       display: none;
@@ -640,6 +655,7 @@
         left: 0;
         right: 0;
         flex-direction: column;
+        align-items: stretch;
         gap: 0;
         padding: 0.5rem 1rem 1rem;
         background: var(--black);
@@ -659,6 +675,16 @@
         display: block;
         padding: 0.9rem 0.25rem;
         font-size: 0.95rem;
+      }
+
+      nav ul .nav-cta-item {
+        padding-top: 0.65rem;
+      }
+
+      nav ul a.nav-cta {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        text-align: center;
       }
 
       #hero {
@@ -884,6 +910,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li class="nav-cta-item"><a href="#contact" class="nav-cta">Let's Work Together</a></li>
     </ul>
   </nav>
 
