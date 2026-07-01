@@ -509,6 +509,14 @@
       grid-template-columns: 1fr;
     }
 
+    .short-feature-media {
+      place-items: center;
+    }
+
+    .short-feature-media .video-thumb-short {
+      width: min(100%, 280px);
+    }
+
     .heated-card {
       border-top-color: var(--mint);
       background: linear-gradient(135deg, rgba(125,212,160,0.07), rgba(26,26,26,1) 42%);
@@ -562,6 +570,23 @@
       border-color: rgba(240,201,160,0.32);
       background: rgba(240,201,160,0.08);
       color: var(--cream);
+    }
+
+    .daddy-card {
+      border-top-color: var(--mint);
+      background: linear-gradient(135deg, rgba(125,212,160,0.08), rgba(26,26,26,1) 46%);
+    }
+
+    .daddy-card .featured-media {
+      background:
+        radial-gradient(circle at 20% 18%, rgba(125,212,160,0.2), transparent 34%),
+        radial-gradient(circle at 82% 82%, rgba(232,105,42,0.14), transparent 30%),
+        var(--black);
+    }
+
+    .daddy-card .video-play {
+      background: var(--cream);
+      color: var(--black);
     }
 
     .project-series {
@@ -1435,14 +1460,29 @@
           <p class="project-role">What I created: Editorial Assembly · Titles · Audio Sync · Color</p>
         </div>
       </article>
-      <div class="show-card">
-        <div class="show-card-header"></div>
-        <div class="show-card-body">
-          <span class="show-tag">Cybersecurity</span>
-          <h3>Industrial Cyber Security Insider</h3>
-          <p>Clear conversations about the people, systems, and decisions shaping industrial cybersecurity.</p>
+      <article class="show-card featured-show-card daddy-card">
+        <div class="featured-media single-video short-feature-media">
+          <button class="video-thumb video-thumb-short" type="button" data-video-id="CbeRdleyzYs" data-video-format="short" aria-label="Play the featured Better Call Daddy short">
+            <img src="https://i.ytimg.com/vi/CbeRdleyzYs/hqdefault.jpg" alt="Better Call Daddy featured short-form video thumbnail" loading="lazy" />
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-label">Watch the Short</span>
+          </button>
         </div>
-      </div>
+        <div class="featured-show-copy">
+          <span class="show-tag mint">Interview Podcast</span>
+          <h3>Better Call Daddy</h3>
+          <p class="project-series">Untold Stories · A Second Perspective</p>
+          <p class="project-hook">Reena finds the stories that have not been heard through her lens, then brings Daddy in for the perspective only he can give.</p>
+          <p>The show pairs candid interviews with a thoughtful closing conversation, giving every story another layer before the episode ends.</p>
+          <div class="project-focus" aria-label="Show format">
+            <span>Untold Stories</span>
+            <span>Personal Interviews</span>
+            <span>Daddy's Perspective</span>
+          </div>
+          <p class="project-role">Featured piece: Short-Form Video</p>
+          <a class="channel-link" href="https://www.youtube.com/@BetterCallDaddy/featured" target="_blank" rel="noopener">Visit Better Call Daddy on YouTube →</a>
+        </div>
+      </article>
     </div>
   </section>
 
