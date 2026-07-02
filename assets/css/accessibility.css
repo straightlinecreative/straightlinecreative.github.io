@@ -38,10 +38,12 @@
   outline-offset: 5px;
 }
 
-[aria-hidden="true"] {
+.video-modal[aria-hidden="true"],
+.post-submit-cta[aria-hidden="true"] {
   visibility: hidden;
 }
 
-.video-modal[aria-hidden="false"] {
+.video-modal[aria-hidden="false"],
+.post-submit-cta[aria-hidden="false"] {
   visibility: visible;
 }
