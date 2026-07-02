@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
   gap: 3rem;
-  align-items: center;
+  align-items: start;
 }
 
 #about .story-photo-wrap {
