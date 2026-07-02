@@ -1,0 +1,65 @@
+name: Connect brand assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/connect-brand-assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Connect favicon and social image
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          canonical = '  <link rel="canonical" href="https://straightlinecreative.github.io/" />\n'
+          favicon = '  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />\n'
+          if favicon not in text:
+              text = text.replace(canonical, canonical + favicon)
+
+          text = text.replace(
+              '  <meta property="og:image" content="https://straightlinecreative.github.io/assets/images/20250829_112543.jpg" />',
+              '  <meta property="og:image" content="https://straightlinecreative.github.io/assets/images/social-share.svg" />\n'
+              '  <meta property="og:image:type" content="image/svg+xml" />\n'
+              '  <meta property="og:image:width" content="1200" />\n'
+              '  <meta property="og:image:height" content="630" />'
+          )
+          text = text.replace(
+              '  <meta property="og:image:alt" content="Kevin Cook, founder of Straightline Creative" />',
+              '  <meta property="og:image:alt" content="Straightline Creative. Creating Content Worth Watching." />'
+          )
+          text = text.replace(
+              '  <meta name="twitter:image" content="https://straightlinecreative.github.io/assets/images/20250829_112543.jpg" />',
+              '  <meta name="twitter:image" content="https://straightlinecreative.github.io/assets/images/social-share.svg" />'
+          )
+          text = text.replace(
+              '  <meta name="twitter:image:alt" content="Kevin Cook, founder of Straightline Creative" />',
+              '  <meta name="twitter:image:alt" content="Straightline Creative. Creating Content Worth Watching." />'
+          )
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit metadata update
+        run: |
+          if git diff --quiet; then
+            echo "Metadata already connected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Use branded favicon and social preview"
+          git push
