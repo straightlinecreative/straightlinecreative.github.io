@@ -1,1 +1,32 @@
-/* Performance enhancements are added during the performance pass. */
+/* Rendering and loading improvements layered over the core design. */
+
+@supports (content-visibility: auto) {
+  #about,
+  #services,
+  #work,
+  #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
+}
+
+.service-card,
+.show-card,
+.story-photo-wrap {
+  contain: layout paint;
+}
+
+.video-thumb img,
+.story-photo {
+  background: #0d0d0d;
+}
+
+@media (prefers-reduced-data: reduce) {
+  #hero::before {
+    display: none;
+  }
+
+  nav {
+    backdrop-filter: none;
+  }
+}
