@@ -1,5 +1,16 @@
 /* Touch targets, safe-area handling, and small-screen spacing. */
 
+/* Keep the Story copy aligned with the top of the portrait. */
+.about-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  align-items: start;
+}
+
+.story-photo-wrap {
+  width: min(100%, 420px);
+  justify-self: center;
+}
+
 button,
 a,
 input,
@@ -31,6 +42,14 @@ textarea {
 
   .section-title {
     line-height: 1.05;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-photo-wrap {
+    width: 100%;
   }
 
   .featured-show-copy,
