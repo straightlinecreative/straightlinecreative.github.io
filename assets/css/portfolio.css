@@ -1,1 +1,50 @@
-/* Portfolio refinements are added during the portfolio polish pass. */
+/* Consistent hierarchy and alignment across project cards. */
+
+.shows-grid {
+  align-items: stretch;
+}
+
+.featured-show-copy h3 {
+  line-height: 1.12;
+}
+
+.featured-show-copy > p:not(.project-series):not(.project-role) {
+  max-width: 62ch;
+}
+
+.supporting-project-card .featured-show-copy,
+.compact-project-card .featured-show-copy {
+  height: 100%;
+}
+
+.supporting-project-card .project-role,
+.compact-project-card .project-role {
+  margin-top: auto;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.featured-show-copy > .channel-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.featured-show-card .channel-link {
+  margin-top: 0.25rem;
+}
+
+.project-role {
+  margin-bottom: 0.35rem !important;
+}
+
+.supporting-project-card .featured-media,
+.compact-project-card .featured-media {
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .featured-show-card .featured-show-copy {
+    padding-top: 1.75rem;
+  }
+}
