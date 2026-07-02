@@ -3,8 +3,6 @@ name: Finish launch accessibility pass
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/connect-brand-assets.yml'
   workflow_dispatch:
 
 permissions:
@@ -121,6 +119,7 @@ jobs:
       - name: Remove temporary files and workflow
         run: |
           rm -rf .tmp-assets
+          rm -f .launch-pass-trigger
           rm .github/workflows/connect-brand-assets.yml
 
       - name: Commit finished launch pass
