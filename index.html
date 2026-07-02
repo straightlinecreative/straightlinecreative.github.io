@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Straightline Creative</title>
+  <title>Straightline Creative | Podcast, Video &amp; Content Strategy</title>
+  <meta name="description" content="Straightline Creative helps people turn ideas into podcasts, videos, and stories that educate, inspire, and connect." />
+  <link rel="canonical" href="https://straightlinecreative.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Straightline Creative" />
+  <meta property="og:title" content="Straightline Creative | Podcast, Video &amp; Content Strategy" />
+  <meta property="og:description" content="Straightline Creative helps people turn ideas into podcasts, videos, and stories that educate, inspire, and connect." />
+  <meta property="og:url" content="https://straightlinecreative.github.io/" />
+  <meta property="og:image" content="https://straightlinecreative.github.io/assets/images/20250829_112543.jpg" />
+  <meta property="og:image:alt" content="Kevin Cook, founder of Straightline Creative" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Straightline Creative | Podcast, Video &amp; Content Strategy" />
+  <meta name="twitter:description" content="Straightline Creative helps people turn ideas into podcasts, videos, and stories that educate, inspire, and connect." />
+  <meta name="twitter:image" content="https://straightlinecreative.github.io/assets/images/20250829_112543.jpg" />
+  <meta name="twitter:image:alt" content="Kevin Cook, founder of Straightline Creative" />
+
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -165,38 +182,41 @@
       z-index: 1;
     }
 
+    .hero-brand {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
     .hero-title {
+      display: block;
       font-size: clamp(3rem, 8vw, 6rem);
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 0.3rem;
-      position: relative;
-      z-index: 1;
     }
     .hero-title .cream  { color: var(--cream); }
     .hero-title .orange { color: var(--orange); }
 
     .hero-divider {
+      display: block;
       width: 100%;
       max-width: 700px;
       height: 3px;
       background: var(--white);
       margin: 0.6rem auto;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-title-2 {
+      display: block;
       font-size: clamp(2.5rem, 7vw, 5rem);
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mint);
       margin-bottom: 1.4rem;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-promise {
@@ -1284,11 +1304,13 @@
   <!-- HERO -->
   <section id="hero">
     <p class="hero-eyebrow">Podcast Producer • Content Strategist • Digital Storyteller</p>
-    <h1 class="hero-title">
-      <span class="cream">STRAIGHT</span><span class="orange">LINE</span>
+    <h1 class="hero-brand">
+      <span class="hero-title">
+        <span class="cream">STRAIGHT</span><span class="orange">LINE</span>
+      </span>
+      <span class="hero-divider" aria-hidden="true"></span>
+      <span class="hero-title-2">CREATIVE</span>
     </h1>
-    <div class="hero-divider"></div>
-    <h1 class="hero-title-2">CREATIVE</h1>
     <p class="hero-promise">Creating Content Worth Watching.</p>
     <p class="hero-sub">
       I help people turn ideas into stories that educate, inspire, and connect.
