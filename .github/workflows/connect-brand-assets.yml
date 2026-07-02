@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Connect favicon and social image
+      - name: Connect favicon, social image, and correct project spelling
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -49,17 +49,19 @@ jobs:
               '  <meta name="twitter:image:alt" content="Straightline Creative. Creating Content Worth Watching." />'
           )
 
+          text = text.replace('Heated Reverance', 'Heated Reverence')
+
           path.write_text(text, encoding='utf-8')
           PY
 
-      - name: Commit metadata update
+      - name: Commit site update
         run: |
           if git diff --quiet; then
-            echo "Metadata already connected."
+            echo "Site is already up to date."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Use branded favicon and social preview"
+          git commit -m "Correct Heated Reverence spelling"
           git push
