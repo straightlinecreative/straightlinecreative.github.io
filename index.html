@@ -485,17 +485,20 @@
       background: var(--gray);
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.2s;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.2s, border-color 0.2s;
     }
-    .show-card:hover { transform: translateY(-4px); }
+    .show-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.13);
+    }
 
     .featured-show-card {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
       align-items: stretch;
-      border-top: 3px solid var(--orange);
+      border-top: 3px solid var(--mint);
     }
 
     .supporting-project-card,
@@ -503,6 +506,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      background: var(--gray);
       border-top: 3px solid var(--orange);
     }
 
@@ -526,6 +530,27 @@
     .compact-project-card .project-hook {
       font-size: 1rem !important;
       margin-bottom: 0.8rem !important;
+    }
+
+    .supporting-project-card .show-tag,
+    .supporting-project-card .show-tag.mint,
+    .compact-project-card .show-tag,
+    .compact-project-card .show-tag.mint {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--cream);
+    }
+
+    .supporting-project-card .project-role,
+    .compact-project-card .project-role {
+      margin-top: auto;
+      padding-top: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .supporting-project-card .channel-link,
+    .compact-project-card .channel-link {
+      margin-top: 0.15rem;
     }
 
     .work-tier-label {
@@ -558,7 +583,7 @@
       grid-template-columns: minmax(0, 2fr) minmax(150px, 0.75fr);
       gap: 0.75rem;
       padding: 1rem;
-      background: var(--black);
+      background: #0D0D0D;
     }
 
     .featured-media.single-video {
@@ -566,15 +591,14 @@
     }
 
     .heated-card {
-      border-top-color: var(--mint);
       background: linear-gradient(135deg, rgba(125,212,160,0.07), rgba(26,26,26,1) 42%);
     }
 
     .heated-card .featured-media {
       background:
-        radial-gradient(circle at 12% 18%, rgba(232,105,42,0.18), transparent 34%),
-        radial-gradient(circle at 88% 82%, rgba(125,212,160,0.14), transparent 32%),
-        var(--black);
+        radial-gradient(circle at 12% 18%, rgba(232,105,42,0.16), transparent 34%),
+        radial-gradient(circle at 88% 82%, rgba(125,212,160,0.12), transparent 32%),
+        #0D0D0D;
     }
 
     .heated-card .featured-show-copy {
@@ -583,14 +607,6 @@
 
     .leap-card {
       border-top-color: var(--cream);
-      background: linear-gradient(135deg, rgba(240,201,160,0.08), rgba(26,26,26,1) 45%);
-    }
-
-    .leap-card .featured-media {
-      background:
-        radial-gradient(circle at 18% 20%, rgba(240,201,160,0.15), transparent 34%),
-        radial-gradient(circle at 82% 78%, rgba(232,105,42,0.14), transparent 30%),
-        var(--black);
     }
 
     .leap-card .video-play {
@@ -604,26 +620,10 @@
 
     .recruiting-card {
       border-top-color: var(--orange);
-      background: linear-gradient(135deg, rgba(232,105,42,0.08), rgba(26,26,26,1) 46%);
-    }
-
-    .recruiting-card .featured-media {
-      background:
-        radial-gradient(circle at 15% 22%, rgba(232,105,42,0.2), transparent 34%),
-        radial-gradient(circle at 84% 76%, rgba(240,201,160,0.12), transparent 30%),
-        var(--black);
     }
 
     .daddy-card {
       border-top-color: var(--mint);
-      background: linear-gradient(135deg, rgba(125,212,160,0.08), rgba(26,26,26,1) 46%);
-    }
-
-    .daddy-card .featured-media {
-      background:
-        radial-gradient(circle at 20% 18%, rgba(125,212,160,0.2), transparent 34%),
-        radial-gradient(circle at 82% 82%, rgba(232,105,42,0.14), transparent 30%),
-        var(--black);
     }
 
     .daddy-card .video-play {
@@ -696,12 +696,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.02) 65%);
+      background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.01) 62%);
     }
 
     .video-thumb:hover img {
-      transform: scale(1.03);
-      opacity: 0.88;
+      transform: scale(1.02);
+      opacity: 0.9;
     }
 
     .video-play {
@@ -774,6 +774,26 @@
     }
 
     .channel-link:hover { color: var(--cream); }
+
+    .show-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      background: rgba(232,105,42,0.16);
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .show-tag.mint {
+      background: rgba(125,212,160,0.14);
+      color: var(--mint);
+    }
 
     /* ── VIDEO MODAL ── */
     .video-modal {
@@ -1392,7 +1412,7 @@
             <span class="video-label">Watch the Ad</span>
           </button>
           <button class="video-thumb video-thumb-short" type="button" data-video-id="9CYFY15hwfc" data-video-format="short" aria-label="Play the Grow Everything short">
-            <img src="https://i.ytimg.com/vi/9CYFY15hwfc/hqdefault.jpg" alt="Grow Everything short-form video thumbnail" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/9CYFY15hwfc/hqdefault.jpg" alt="Grow Everything short form video thumbnail" loading="lazy" />
             <span class="video-play" aria-hidden="true">▶</span>
             <span class="video-label">Watch the Short</span>
           </button>
@@ -1451,7 +1471,7 @@
             <span class="video-label">Watch the Full Video</span>
           </button>
           <button class="video-thumb video-thumb-short" type="button" data-video-id="CbeRdleyzYs" data-video-format="short" aria-label="Play the featured Better Call Daddy short">
-            <img src="https://i.ytimg.com/vi/CbeRdleyzYs/hqdefault.jpg" alt="Better Call Daddy featured short-form video thumbnail" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/CbeRdleyzYs/hqdefault.jpg" alt="Better Call Daddy featured short form video thumbnail" loading="lazy" />
             <span class="video-play" aria-hidden="true">▶</span>
             <span class="video-label">Watch the Short</span>
           </button>
