@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Straightline Creative social preview</title>
+  <desc id="desc">Straightline Creative brand lockup with the promise Creating Content Worth Watching.</desc>
+  <rect width="1200" height="630" fill="#111111"/>
+  <rect width="1200" height="14" fill="#E8692A"/>
+  <circle cx="180" cy="100" r="420" fill="#E8692A" opacity="0.12"/>
+  <circle cx="1050" cy="560" r="300" fill="#7DD4A0" opacity="0.10"/>
+
+  <text x="86" y="190" font-family="Barlow, Arial, sans-serif" font-size="92" font-weight="900" fill="#F0C9A0">STRAIGHT</text>
+  <text x="596" y="190" font-family="Barlow, Arial, sans-serif" font-size="92" font-weight="900" fill="#E8692A">LINE</text>
+  <rect x="86" y="216" width="774" height="6" fill="#FFFFFF"/>
+  <text x="86" y="326" font-family="Barlow, Arial, sans-serif" font-size="76" font-weight="900" letter-spacing="5" fill="#7DD4A0">CREATIVE</text>
+
+  <text x="86" y="430" font-family="Barlow, Arial, sans-serif" font-size="46" font-weight="900" fill="#F0C9A0">CREATING CONTENT WORTH WATCHING.</text>
+  <text x="86" y="492" font-family="Barlow, Arial, sans-serif" font-size="30" fill="#D2D2D2">Podcasts. Video. Strategy. Stories that stick.</text>
+  <text x="86" y="540" font-family="Barlow, Arial, sans-serif" font-size="30" fill="#B9B9B9">Thoughtful creative work built through real conversation.</text>
+
+  <rect x="930" y="110" width="180" height="180" rx="28" fill="#181818" stroke="#7DD4A0" stroke-width="5"/>
+  <text x="1020" y="225" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-size="72" font-weight="900" fill="#E8692A">SLC</text>
+
+  <text x="86" y="595" font-family="Barlow, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="3" fill="#FFFFFF">STRAIGHTLINE CREATIVE</text>
+</svg>
