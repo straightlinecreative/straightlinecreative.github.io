@@ -121,10 +121,18 @@
 
   if (contactForm && formStatus && postSubmitCta) {
     const submitButton = contactForm.querySelector('button[type="submit"]');
+    const meetingButton = postSubmitCta.querySelector('.btn');
     const defaultText = submitButton ? submitButton.textContent : 'Send Message';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (meetingButton) {
+      meetingButton.classList.remove('btn-outline');
+      meetingButton.classList.add('btn-primary');
+    }
 
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      let submissionSucceeded = false;
 
       formStatus.textContent = '';
       formStatus.className = 'form-status';
@@ -134,6 +142,8 @@
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
+        submitButton.removeAttribute('style');
+        submitButton.removeAttribute('aria-label');
       }
 
       try {
@@ -147,20 +157,59 @@
           throw new Error(`Form submission failed with ${response.status}`);
         }
 
-        formStatus.textContent = 'Thanks! Your message has been sent.';
-        formStatus.classList.add('success');
+        submissionSucceeded = true;
+        formStatus.textContent = 'Message sent successfully.';
+        formStatus.className = 'form-status success sr-only';
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Message Sent ✓';
+          submitButton.setAttribute('aria-label', 'Message sent successfully');
+          Object.assign(submitButton.style, {
+            background: 'var(--mint)',
+            color: 'var(--black)',
+            cursor: 'default',
+            opacity: '1',
+            transform: 'none'
+          });
+        }
+
         postSubmitCta.classList.add('visible');
         postSubmitCta.setAttribute('aria-hidden', 'false');
         contactForm.reset();
+
+        if (!reduceMotion && typeof postSubmitCta.animate === 'function') {
+          postSubmitCta.animate([
+            { opacity: 0, transform: 'translateY(14px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], {
+            duration: 450,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+          });
+        }
+
+        if (!reduceMotion && meetingButton && typeof meetingButton.animate === 'function') {
+          meetingButton.animate([
+            { boxShadow: '0 0 0 rgba(232, 105, 42, 0)', transform: 'scale(1)' },
+            { boxShadow: '0 0 0 10px rgba(232, 105, 42, 0.16)', transform: 'scale(1.025)' },
+            { boxShadow: '0 0 0 rgba(232, 105, 42, 0)', transform: 'scale(1)' }
+          ], {
+            duration: 900,
+            delay: 350,
+            easing: 'ease-out'
+          });
+        }
       } catch (error) {
         formStatus.textContent = 'Something went wrong. Please try again or use the scheduling link below.';
         formStatus.classList.add('error');
         postSubmitCta.classList.add('visible');
         postSubmitCta.setAttribute('aria-hidden', 'false');
       } finally {
-        if (submitButton) {
+        if (submitButton && !submissionSucceeded) {
           submitButton.disabled = false;
           submitButton.textContent = defaultText;
+          submitButton.removeAttribute('style');
+          submitButton.removeAttribute('aria-label');
         }
       }
     });
