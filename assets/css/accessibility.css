@@ -47,3 +47,7 @@
 .post-submit-cta[aria-hidden="false"] {
   visibility: visible;
 }
+
+.section-title .cream {
+  color: var(--cream);
+}
